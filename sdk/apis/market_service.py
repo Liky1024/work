@@ -40,3 +40,11 @@ class MarketService:
         """
         return self.__client.call("eleme.market.confirmOrder", {"orderNo": order_no})
 
+    def mark_finish_cooking_time(self, device_info, order_id):
+        """
+        物联网设备确认出餐
+        :param deviceInfo:设备信息
+        :param orderId:订单id
+        """
+        return self.__client.call("eleme.market.markFinishCookingTime", {"deviceInfo": device_info, "orderId": order_id})
+

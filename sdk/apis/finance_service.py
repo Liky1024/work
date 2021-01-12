@@ -103,3 +103,19 @@ class FinanceService:
         """
         return self.__client.call("eleme.finance.getOrderNew", {"shopId": shop_id, "orderId": order_id})
 
+    def query_allowance_bills(self, shop_id, query):
+        """
+        查询返现汇总信息账单
+        :param shopId:饿了么分店、单店、总店店铺id
+        :param query:查询条件
+        """
+        return self.__client.call("eleme.finance.queryAllowanceBills", {"shopId": shop_id, "query": query})
+
+    def query_allowance_bill_detail(self, shop_id, query):
+        """
+        查询返现每日详单
+        :param shopId:饿了么分店、单店、总店店铺id
+        :param query:查询条件
+        """
+        return self.__client.call("eleme.finance.queryAllowanceBillDetail", {"shopId": shop_id, "query": query})
+

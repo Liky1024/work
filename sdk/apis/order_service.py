@@ -276,6 +276,15 @@ class OrderService:
         """
         return self.__client.call("eleme.order.applyRefund", {"orderId": order_id, "type": type, "remark": remark})
 
+    def shop_pay_apply_refund(self, order_id, type, remark):
+        """
+        商家主动发起退单（企业到店买单订单）
+        :param orderId:订单Id
+        :param type:取消原因
+        :param remark:备注说明
+        """
+        return self.__client.call("eleme.order.shopPayApplyRefund", {"orderId": order_id, "type": type, "remark": remark})
+
     def set_order_prepared(self, order_id):
         """
         非自配送餐厅标记已出餐
@@ -360,4 +369,11 @@ class OrderService:
         :param orderId:订单Id
         """
         return self.__client.call("eleme.order.queryCallAvailable", {"orderId": order_id})
+
+    def batch_get_refund_orders(self, order_ids):
+        """
+        批量获取订单退款信息V2
+        :param orderIds:订单Id列表
+        """
+        return self.__client.call("eleme.order.batchGetRefundOrders", {"orderIds": order_ids})
 

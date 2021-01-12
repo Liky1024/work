@@ -185,6 +185,41 @@ class ActivityService:
         """
         return self.__client.call("eleme.activity.coupon.updateCouponStatus", {"criteria": criteria, "type": type})
 
+    def create_activity_template_v_2(self, activity_template):
+        """
+        创建券模板
+        :param activityTemplate:创建券模板对象
+        """
+        return self.__client.call("eleme.activity.coupon.createActivityTemplateV2", {"activityTemplate": activity_template})
+
+    def modify_activity_template_v_2(self, update_model):
+        """
+        修改券模板
+        :param updateModel:修改券模板对象
+        """
+        return self.__client.call("eleme.activity.coupon.modifyActivityTemplateV2", {"updateModel": update_model})
+
+    def invalid_activity_template_v_2(self, invalid_model):
+        """
+        作废券模板
+        :param invalidModel:作废券模板对象
+        """
+        return self.__client.call("eleme.activity.coupon.invalidActivityTemplateV2", {"invalidModel": invalid_model})
+
+    def query_by_template_id_v_2(self, query_model):
+        """
+        查询券模板
+        :param queryModel:查询券模板对象
+        """
+        return self.__client.call("eleme.activity.coupon.queryByTemplateIdV2", {"queryModel": query_model})
+
+    def present_coupon_with_template_id_v_2(self, present_with_template_model):
+        """
+        根据券模板发券
+        :param presentWithTemplateModel:发券对象
+        """
+        return self.__client.call("eleme.activity.coupon.presentCouponWithTemplateIdV2", {"presentWithTemplateModel": present_with_template_model})
+
     def query_order_subsidy(self, order_id):
         """
         查询订单内营销相关数据

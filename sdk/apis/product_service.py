@@ -661,6 +661,21 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.updateItemGroup", {"shopId": shop_id, "itemId": item_id, "categoryId": category_id})
 
+    def bind_video(self, item_id, content_id):
+        """
+        绑定商品视频
+        :param itemId:商品id
+        :param contentId:内容id
+        """
+        return self.__client.call("eleme.product.item.bindVideo", {"itemId": item_id, "contentId": content_id})
+
+    def unbind_video(self, item_id):
+        """
+        解绑商品视频
+        :param itemId:商品id
+        """
+        return self.__client.call("eleme.product.item.unbindVideo", {"itemId": item_id})
+
     def get_chain_item(self, iid):
         """
         查询连锁总店商品信息
