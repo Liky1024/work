@@ -377,3 +377,10 @@ class OrderService:
         """
         return self.__client.call("eleme.order.batchGetRefundOrders", {"orderIds": order_ids})
 
+    def query_refund_amount_info(self, order_id):
+        """
+        获取订单退款金额分摊明细信息
+        :param orderId:订单Id
+        """
+        return self.__client.call("eleme.order.queryRefundAmountInfo", {"orderId": order_id})
+

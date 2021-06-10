@@ -134,6 +134,28 @@ class ShopService:
         """
         return self.__client.call("eleme.shop.getShopLicense", {"shopId": shop_id})
 
+    def get_wss_address(self, query_long_line_address_d_t_o):
+        """
+        查询长链地址
+        :param queryLongLineAddressDTO:查询长链地址表单
+        """
+        return self.__client.call("eleme.shop.im.getWssAddress", {"queryLongLineAddressDTO": query_long_line_address_d_t_o})
+
+    def get_i_m_status(self, shop_id):
+        """
+        查询店铺IM状态
+        :param shopId:店铺ID
+        """
+        return self.__client.call("eleme.shop.im.getIMStatus", {"shopId": shop_id})
+
+    def update_i_m_status(self, shop_id, status):
+        """
+        更新店铺IM开关状态
+        :param shopId:店铺ID
+        :param status:IM开关状态（0：关闭 1：开启）
+        """
+        return self.__client.call("eleme.shop.im.updateIMStatus", {"shopId": shop_id, "status": status})
+
     def submit_open_store_message_audit(self, open_store_message):
         """
         提交开店申请接口

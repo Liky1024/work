@@ -48,3 +48,23 @@ class MarketService:
         """
         return self.__client.call("eleme.market.markFinishCookingTime", {"deviceInfo": device_info, "orderId": order_id})
 
+    def upload_logistic_info(self, logistic_infos):
+        """
+        线下服务上传订单物流单号
+        :param logisticInfos:订单物流信息(最多100条)
+        """
+        return self.__client.call("eleme.market.uploadLogisticInfo", {"logisticInfos": logistic_infos})
+
+    def get_upload_file_signature_info(self):
+        """
+        获取文件上传秘钥信息
+        """
+        return self.__client.call("eleme.market.getUploadFileSignatureInfo", {})
+
+    def upload_image_info(self, image_infos):
+        """
+        上传图片信息
+        :param imageInfos:图片信息(最多100条)
+        """
+        return self.__client.call("eleme.market.uploadImageInfo", {"imageInfos": image_infos})
+

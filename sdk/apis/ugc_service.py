@@ -200,6 +200,13 @@ class UgcService:
         """
         return self.__client.call("eleme.ugc.getORateResult", {"rateQuery": rate_query})
 
+    def get_o_user_rate_result(self, rate_query):
+        """
+        查询指定用户的评价信息
+        :param rateQuery:评价查询参数
+        """
+        return self.__client.call("eleme.ugc.getOUserRateResult", {"rateQuery": rate_query})
+
     def count_o_rate_result(self, rate_query):
         """
         统计评价信息数量

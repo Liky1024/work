@@ -34,6 +34,14 @@ class DataService:
         """
         return self.__client.call("eleme.data.single.getRestaurantSaleRatio", {"shopId": shop_id, "startTime": start_time, "endTime": end_time})
 
+    def get_restaurant_flow_data(self, shop_id, date):
+        """
+        查询指定日期的店铺流量数据
+        :param shopId:店铺ID
+        :param date:日期
+        """
+        return self.__client.call("eleme.data.single.getRestaurantFlowData", {"shopId": shop_id, "date": date})
+
     def get_chain_restaurant_sale_detail(self, shop_ids, start_time, end_time):
         """
         查询指定时间段内连锁店营业数据汇总(历史数据)
