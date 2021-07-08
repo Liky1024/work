@@ -384,3 +384,26 @@ class OrderService:
         """
         return self.__client.call("eleme.order.queryRefundAmountInfo", {"orderId": order_id})
 
+    def query_cooking_time_config(self, shop_id):
+        """
+        查询店铺订单出餐时长和推荐出餐时长
+        :param shopId:店铺Id
+        """
+        return self.__client.call("eleme.order.queryCookingTimeConfig", {"shopId": shop_id})
+
+    def set_peak_period_cooking_time(self, shop_id, configs):
+        """
+        设置店铺高峰期出餐时长
+        :param shopId:店铺Id
+        :param configs:高峰期出餐时长配置
+        """
+        return self.__client.call("eleme.order.setPeakPeriodCookingTime", {"shopId": shop_id, "configs": configs})
+
+    def set_non_peak_period_cooking_time(self, shop_id, config):
+        """
+        设置店铺非高峰期出餐时长
+        :param shopId:店铺Id
+        :param config:非高峰期出餐配置
+        """
+        return self.__client.call("eleme.order.setNonPeakPeriodCookingTime", {"shopId": shop_id, "config": config})
+

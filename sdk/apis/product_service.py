@@ -676,6 +676,13 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.unbindVideo", {"itemId": item_id})
 
+    def get_items_by_category_id_v_2(self, category_id):
+        """
+        获取一个分类下的所有商品V2接口
+        :param categoryId:商品分类Id
+        """
+        return self.__client.call("eleme.product.item.getItemsByCategoryIdV2", {"categoryId": category_id})
+
     def get_chain_item(self, iid):
         """
         查询连锁总店商品信息
