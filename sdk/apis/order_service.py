@@ -254,7 +254,7 @@ class OrderService:
 
     def mget_delivery_tip_infos(self, order_ids):
         """
-        批量获取订单加小费信息
+        批量获取订单添加小费信息
         :param orderIds:订单Id的列表
         """
         return self.__client.call("eleme.order.mgetDeliveryTipInfos", {"orderIds": order_ids})

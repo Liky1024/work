@@ -46,6 +46,55 @@ class ProductService:
         """
         return self.__client.call("eleme.product.chain.menu.deleteMenu", {"mid": mid})
 
+    def list_by_shop_id(self, shop_id):
+        """
+        查询店铺下的所有有效渠道商品
+        :param shopId:店铺id
+        """
+        return self.__client.call("eleme.product.channel.item.listByShopId", {"shopId": shop_id})
+
+    def list_by_item_ids(self, item_ids):
+        """
+        根据商品id批量查询商品信息
+        :param itemIds:批量商品id列表
+        """
+        return self.__client.call("eleme.product.channel.item.listByItemIds", {"itemIds": item_ids})
+
+    def create(self, item):
+        """
+        创建渠道商品
+        :param item:创建商品模型
+        """
+        return self.__client.call("eleme.product.channel.item.create", {"item": item})
+
+    def modify(self, item):
+        """
+        更新渠道商品
+        :param item:更新商品模型
+        """
+        return self.__client.call("eleme.product.channel.item.modify", {"item": item})
+
+    def remove(self, item_id):
+        """
+        删除渠道商品
+        :param itemId:商品Id
+        """
+        return self.__client.call("eleme.product.channel.item.remove", {"itemId": item_id})
+
+    def batch_set_sale_status(self, item_sale_status_map):
+        """
+        批量设置售卖状态
+        :param itemSaleStatusMap:商品id和对应的售卖状态集合
+        """
+        return self.__client.call("eleme.product.channel.item.batchSetSaleStatus", {"itemSaleStatusMap": item_sale_status_map})
+
+    def batch_set_stock(self, sku_stock_map):
+        """
+        批量设置库存
+        :param skuStockMap:规格id和对应的库存值
+        """
+        return self.__client.call("eleme.product.channel.item.batchSetStock", {"skuStockMap": sku_stock_map})
+
     def get_group(self, gid):
         """
         查询连锁总店商品分组
@@ -350,6 +399,13 @@ class ProductService:
         :param properties:商品属性
         """
         return self.__client.call("eleme.product.item.updateItem", {"itemId": item_id, "categoryId": category_id, "properties": properties})
+
+    def batch_update_items(self, requests):
+        """
+        批量更新商品接口
+        :param requests:批量更新请求
+        """
+        return self.__client.call("eleme.product.item.batchUpdateItems", {"requests": requests})
 
     def batch_fill_stock(self, spec_ids):
         """
