@@ -44,6 +44,14 @@ class ShopcreditscoreService:
         """
         return self.__client.call("eleme.shopCreditScore.single.getShopCreditScore", {"shopId": shop_id})
 
+    def get_shop_punish_list(self, shop_id, event_id):
+        """
+        根据商户id查询商户处置记录
+        :param shopId:商户ID
+        :param eventId:事件id
+        """
+        return self.__client.call("eleme.shopCreditScore.single.getShopPunishList", {"shopId": shop_id, "eventId": event_id})
+
     def get_shop_equity_rules(self, shop_id):
         """
         根据商户ID查询店铺权益规则

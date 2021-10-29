@@ -254,7 +254,7 @@ class OrderService:
 
     def mget_delivery_tip_infos(self, order_ids):
         """
-        批量获取订单添加小费信息
+        批量获取订单加小费信息
         :param orderIds:订单Id的列表
         """
         return self.__client.call("eleme.order.mgetDeliveryTipInfos", {"orderIds": order_ids})
@@ -406,4 +406,11 @@ class OrderService:
         :param config:非高峰期出餐配置
         """
         return self.__client.call("eleme.order.setNonPeakPeriodCookingTime", {"shopId": shop_id, "config": config})
+
+    def set_delay_cooking_time_setting(self, request):
+        """
+        商户设置延长出餐
+        :param request:延长出餐时长
+        """
+        return self.__client.call("eleme.order.setDelayCookingTimeSetting", {"request": request})
 

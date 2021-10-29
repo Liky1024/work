@@ -175,6 +175,11 @@
 
 
 ## CHANGELOG:
+
+### [1.30.3]
+Release Date : 2021-10-29
+- [Feature] 新增接口
+
 ### [1.30.2]
 Release Date : 2021-09-18
 - [Feature] 商品服务新增接口

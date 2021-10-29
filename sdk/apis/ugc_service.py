@@ -164,6 +164,17 @@ class UgcService:
         """
         return self.__client.call("eleme.ugc.replyRateByRateIdsAndShopId", {"rateIds": rate_ids, "shopId": shop_id, "replyType": reply_type, "reply": reply})
 
+    def reply_rate_by_rate_ids_and_shop_id_v_2(self, rate_ids, shop_id, reply_type, reply, template_id):
+        """
+        通过rateIds和shopId 批量回复指定类型的评论(推荐)
+        :param rateIds: 评论编号
+        :param shopId: 餐厅id
+        :param replyType:评论类型
+        :param reply:回复的内容
+        :param templateId:使用模板ID
+        """
+        return self.__client.call("eleme.ugc.replyRateByRateIdsAndShopIdV2", {"rateIds": rate_ids, "shopId": shop_id, "replyType": reply_type, "reply": reply, "templateId": template_id})
+
     def send_coupon_by_order_id(self, order_id, coupon):
         """
         根据订单ID赠送代金券给该订单的评价用户
@@ -254,4 +265,21 @@ class UgcService:
         :param extendsQueries:评价赠券信息查询条件
         """
         return self.__client.call("eleme.ugc.getCouponExtendsInfo", {"extendsQueries": extends_queries})
+
+    def get_shop_factor_infos(self, supplier_id, shop_ids, offset, limit):
+        """
+        查询店铺评分及各评分因子数据
+        :param supplierId: 连锁店id
+        :param shopIds: 店铺id集合
+        :param offset: 页面偏移量
+        :param limit: 页面大小
+        """
+        return self.__client.call("eleme.ugc.getShopFactorInfos", {"supplierId": supplier_id, "shopIds": shop_ids, "offset": offset, "limit": limit})
+
+    def get_order_rate_detail(self, order_id):
+        """
+        查询订单评价详情
+        :param orderId: 页面大小
+        """
+        return self.__client.call("eleme.ugc.getOrderRateDetail", {"orderId": order_id})
 
