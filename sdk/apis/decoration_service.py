@@ -136,11 +136,26 @@ class DecorationService:
         """
         return self.__client.call("eleme.decoration.poster.getPosterDetailById", {"posterId": poster_id})
 
+    def get_poster_detail_by_id_v_2(self, poster_id, shop_id):
+        """
+        根据海报ID获取海报详情 V2
+        :param posterId:海报ID
+        :param shopId:当前店铺ID，默认情况下和当前帐号一致，如果是连锁分店想切换到子店进行操作，那么使用子店的店铺id进行设置
+        """
+        return self.__client.call("eleme.decoration.poster.getPosterDetailByIdV2", {"posterId": poster_id, "shopId": shop_id})
+
     def query_effective_posters(self):
         """
         查询有效的海报信息集合
         """
         return self.__client.call("eleme.decoration.poster.queryEffectivePosters", {})
+
+    def query_effective_posters_v_2(self, shop_id):
+        """
+        查询有效的海报信息集合 V2
+        :param shopId:当前店铺ID，默认情况下和当前帐号一致，如果是连锁分店想切换到子店进行操作，那么使用子店的店铺id进行设置
+        """
+        return self.__client.call("eleme.decoration.poster.queryEffectivePostersV2", {"shopId": shop_id})
 
     def get_poster_history_image(self):
         """
@@ -182,11 +197,4 @@ class DecorationService:
         :param image:文件内容base64编码值
         """
         return self.__client.call("eleme.decoration.image.upload", {"image": image})
-
-    def get_image(self, hash):
-        """
-        根据图片HASH值获取图片信息
-        :param hash:图片HASH值
-        """
-        return self.__client.call("eleme.decoration.image.getImage", {"hash": hash})
 

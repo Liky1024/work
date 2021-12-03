@@ -176,6 +176,10 @@
 
 ## CHANGELOG:
 
+### [1.30.4]
+Release Date : 2021-12-03
+- [Feature] 新增接口
+
 ### [1.30.3]
 Release Date : 2021-10-29
 - [Feature] 新增接口

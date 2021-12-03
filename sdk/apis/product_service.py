@@ -402,7 +402,7 @@ class ProductService:
 
     def batch_update_items(self, requests):
         """
-        批量更新商品接口
+        批量更新商品
         :param requests:批量更新请求
         """
         return self.__client.call("eleme.product.item.batchUpdateItems", {"requests": requests})
