@@ -176,6 +176,10 @@
 
 ## CHANGELOG:
 
+### [1.30.5]
+Release Date : 2022-01-14
+- [Feature] 订单服务新增接口，ugc服务更新接口
+
 ### [1.30.4]
 Release Date : 2021-12-03
 - [Feature] 新增接口

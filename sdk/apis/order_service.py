@@ -414,3 +414,10 @@ class OrderService:
         """
         return self.__client.call("eleme.order.setDelayCookingTimeSetting", {"request": request})
 
+    def batch_get_order_address(self, order_ids):
+        """
+        批量获取订单地址
+        :param orderIds:订单ID列表
+        """
+        return self.__client.call("eleme.order.batchGetOrderAddress", {"orderIds": order_ids})
+
