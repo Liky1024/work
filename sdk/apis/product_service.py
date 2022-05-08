@@ -314,6 +314,28 @@ class ProductService:
         """
         return self.__client.call("eleme.product.category.removeDayPartingStickTime", {"shopId": shop_id, "categoryId": category_id})
 
+    def get_back_category_v_2(self, shop_id):
+        """
+        查询新版商品后台类目
+        :param shopId:店铺Id
+        """
+        return self.__client.call("eleme.product.category.getBackCategoryV2", {"shopId": shop_id})
+
+    def get_back_category_property_v_2(self, shop_id, back_category_id):
+        """
+        查询新版商品后台类目属性
+        :param shopId:店铺Id
+        :param backCategoryId:后台类目id
+        """
+        return self.__client.call("eleme.product.category.getBackCategoryPropertyV2", {"shopId": shop_id, "backCategoryId": back_category_id})
+
+    def get_materials(self, shop_id):
+        """
+        查询新版商品原材料
+        :param shopId:店铺Id
+        """
+        return self.__client.call("eleme.product.category.getMaterials", {"shopId": shop_id})
+
     def create_package(self, category_id, o_package):
         """
         添加套餐
@@ -420,6 +442,14 @@ class ProductService:
         :param specIds:商品及商品规格的列表
         """
         return self.__client.call("eleme.product.item.batchClearStock", {"specIds": spec_ids})
+
+    def batch_update_stock_detail(self, shop_id, update_stock_requests):
+        """
+        批量修改库存详细信息
+        :param shopId:店铺Id
+        :param updateStockRequests:更新规格请求列表
+        """
+        return self.__client.call("eleme.product.item.batchUpdateStockDetail", {"shopId": shop_id, "updateStockRequests": update_stock_requests})
 
     def batch_on_shelf(self, spec_ids):
         """
@@ -627,6 +657,13 @@ class ProductService:
         :param properties:商品属性
         """
         return self.__client.call("eleme.product.item.updateMultiSpecItem", {"itemId": item_id, "categoryId": category_id, "properties": properties})
+
+    def batch_update_multi_spec_item(self, requests):
+        """
+        批量更新多规格商品
+        :param requests:商品规格
+        """
+        return self.__client.call("eleme.product.item.batchUpdateMultiSpecItem", {"requests": requests})
 
     def set_ingredient_group(self, item_id, group_relations):
         """

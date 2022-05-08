@@ -11,10 +11,17 @@ class FinanceService:
 
     def query_balance(self, shop_id):
         """
-        查询商户余额,返回可用余额和总余额
+        查询商户余额,返回可用余额和总余额(弃用，参见新接口queryNewBalance)
         :param shopId:饿了么店铺id
         """
         return self.__client.call("eleme.finance.queryBalance", {"shopId": shop_id})
+
+    def query_new_balance(self, shop_id):
+        """
+        查询商户余额 返回可用余额和子账户余额明细
+        :param shopId:饿了么总店店铺id
+        """
+        return self.__client.call("eleme.finance.queryNewBalance", {"shopId": shop_id})
 
     def query_balance_log(self, request):
         """
@@ -118,4 +125,18 @@ class FinanceService:
         :param query:查询条件
         """
         return self.__client.call("eleme.finance.queryAllowanceBillDetail", {"shopId": shop_id, "query": query})
+
+    def query_term_and_name(self, term_and_name_query):
+        """
+        查询商户帐期和名称
+        :param termAndNameQuery:查询条件
+        """
+        return self.__client.call("eleme.finance.queryTermAndName", {"termAndNameQuery": term_and_name_query})
+
+    def query_by_slave(self, relations_request):
+        """
+        子资金账号查询关系
+        :param relationsRequest:查询条件
+        """
+        return self.__client.call("eleme.finance.queryBySlave", {"relationsRequest": relations_request})
 
