@@ -89,29 +89,6 @@ class OrderService:
         """
         return self.__client.call("eleme.order.noMoreDeliveryLite", {"orderId": order_id})
 
-    def received_order_lite(self, order_id):
-        """
-        订单确认送达
-        :param orderId:订单Id
-        """
-        return self.__client.call("eleme.order.receivedOrderLite", {"orderId": order_id})
-
-    def start_delivery_by_self(self, order_id, phone):
-        """
-        订单确认送出(自配送)
-        :param orderId:订单Id
-        :param phone:配送者电话
-        """
-        return self.__client.call("eleme.order.startDeliveryBySelf", {"orderId": order_id, "phone": phone})
-
-    def complete_delivery_by_self(self, order_id, phone):
-        """
-        订单确认送达(自配送)
-        :param orderId:订单Id
-        :param phone:配送者电话
-        """
-        return self.__client.call("eleme.order.completeDeliveryBySelf", {"orderId": order_id, "phone": phone})
-
     def reply_reminder(self, remind_id, type, content):
         """
         回复催单
@@ -417,7 +394,7 @@ class OrderService:
     def batch_get_order_address(self, order_ids):
         """
         批量获取订单地址
-        :param orderIds:订单ID列表
+        :param orderIds:查询订单对应地址信息
         """
         return self.__client.call("eleme.order.batchGetOrderAddress", {"orderIds": order_ids})
 
