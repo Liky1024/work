@@ -16,22 +16,6 @@ class ShopService:
         """
         return self.__client.call("eleme.shop.getShop", {"shopId": shop_id})
 
-    def dy_call_back_for_ele(self, ele__dto):
-        """
-        抖音回调接口
-        :param ele_dto:回调对象
-        """
-        return self.__client.call("eleme.shop.dyCallBackForEle", {"ele_dto": ele__dto})
-
-    def dy_un_bind_shop_for_ele(self, account_id, merchant_id, version):
-        """
-        抖音解绑回调接口
-        :param accountId:抖音总户ID
-        :param merchantId:抖音门店户ID
-        :param version:版本号
-        """
-        return self.__client.call("eleme.shop.dyUnBindShopForEle", {"accountId": account_id, "merchantId": merchant_id, "version": version})
-
     def update_shop(self, shop_id, properties):
         """
         更新店铺信息

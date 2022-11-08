@@ -776,13 +776,6 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.getItemsByCategoryIdV2", {"categoryId": category_id})
 
-    def dy_audit_status_call_back(self, request):
-        """
-        抖音审核回调
-        :param request:回调请求参数
-        """
-        return self.__client.call("eleme.product.dy.dyAuditStatusCallBack", {"request": request})
-
     def get_chain_item(self, iid):
         """
         查询连锁总店商品信息
