@@ -682,7 +682,7 @@ class ProductService:
 
     def get_item_material_tree(self, shop_id):
         """
-        获取商品原材料数据(新版)
+        获取商品原材料数据（即将下线）
         :param shopId:店铺ID
         """
         return self.__client.call("eleme.product.item.getItemMaterialTree", {"shopId": shop_id})
@@ -775,6 +775,41 @@ class ProductService:
         :param categoryId:商品分类Id
         """
         return self.__client.call("eleme.product.item.getItemsByCategoryIdV2", {"categoryId": category_id})
+
+    def batch_update_shop_items(self, request):
+        """
+        批量更新商品信息
+        :param request:店铺商品信息
+        """
+        return self.__client.call("eleme.product.item.batchUpdateShopItems", {"request": request})
+
+    def batch_update_item_ingredient(self, request):
+        """
+        批量更新商品配料信息
+        :param request:店铺商品信息
+        """
+        return self.__client.call("eleme.product.item.batchUpdateItemIngredient", {"request": request})
+
+    def batch_update_item_category(self, request):
+        """
+        批量更新商品类目、类目属性、主材料信息
+        :param request:店铺商品信息
+        """
+        return self.__client.call("eleme.product.item.batchUpdateItemCategory", {"request": request})
+
+    def get_shop_limited_items(self, shop_id):
+        """
+        获取店铺内修改受限制的商品，包含两类商品：有锁的商品和有pid关系的商品。这两种商品信息修改受到限制。
+        :param shopId:店铺id
+        """
+        return self.__client.call("eleme.product.item.getShopLimitedItems", {"shopId": shop_id})
+
+    def dy_audit_status_call_back(self, request):
+        """
+        抖音审核回调
+        :param request:回调请求参数
+        """
+        return self.__client.call("eleme.product.dy.dyAuditStatusCallBack", {"request": request})
 
     def get_chain_item(self, iid):
         """
