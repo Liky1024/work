@@ -811,6 +811,20 @@ class ProductService:
         """
         return self.__client.call("eleme.product.dy.dyAuditStatusCallBack", {"request": request})
 
+    def get_shop_commodity_diagnosis_data(self, shop_id):
+        """
+        查询单店铺商品诊断数据
+        :param shopId:店铺ID
+        """
+        return self.__client.call("eleme.product.renovate.getShopCommodityDiagnosisData", {"shopId": shop_id})
+
+    def agree_shop_commodity_diagnosis_problem(self, request):
+        """
+        一键 & 批量优化店铺问题商品详情信息
+        :param request:请求
+        """
+        return self.__client.call("eleme.product.renovate.agreeShopCommodityDiagnosisProblem", {"request": request})
+
     def get_chain_item(self, iid):
         """
         查询连锁总店商品信息

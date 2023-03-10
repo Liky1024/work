@@ -68,3 +68,10 @@ class MarketService:
         """
         return self.__client.call("eleme.market.uploadImageInfo", {"imageInfos": image_infos})
 
+    def query_offline_order(self, order_no):
+        """
+        查询服务市场线下服务订单
+        :param orderNo:服务市场订单编号
+        """
+        return self.__client.call("eleme.market.queryOfflineOrder", {"orderNo": order_no})
+

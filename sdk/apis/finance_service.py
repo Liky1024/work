@@ -93,3 +93,20 @@ class FinanceService:
         """
         return self.__client.call("eleme.finance.queryBySlave", {"relationsRequest": relations_request})
 
+    def query_slave_shop_ids_by_chain_id(self, chain_id, checkout_date):
+        """
+        查询连锁总店结算子门店关系列表
+        :param chainId:饿了么连锁店店铺id
+        :param checkoutDate:入账日期
+        """
+        return self.__client.call("eleme.finance.querySlaveShopIdsByChainId", {"chainId": chain_id, "checkoutDate": checkout_date})
+
+    def query_goods_orders(self, settle_account_shop_id, shop_id_list, query):
+        """
+        批量查询分店商品维度账单数据
+        :param settleAccountShopId:结算入账ID
+        :param shopIdList:门店id列表（限制100）
+        :param query:查询条件
+        """
+        return self.__client.call("eleme.finance.queryGoodsOrders", {"settleAccountShopId": settle_account_shop_id, "shopIdList": shop_id_list, "query": query})
+

@@ -16,3 +16,10 @@ class MsgnewService:
         """
         return self.__client.call("eleme.msgNew.getPushFailMsg", {"msgQueryRequest": msg_query_request})
 
+    def confirm_pull_msg(self, msg_confirm_request):
+        """
+        ISV通过该接口向平台确认已成功拉取消息
+        :param msgConfirmRequest:查询条件
+        """
+        return self.__client.call("eleme.msgNew.confirmPullMsg", {"msgConfirmRequest": msg_confirm_request})
+
