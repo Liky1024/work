@@ -673,6 +673,14 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.setIngredientGroup", {"itemId": item_id, "groupRelations": group_relations})
 
+    def set_sku_ingredient_group(self, spec_id, group_relations):
+        """
+        设置配料组数据
+        :param specId:商品Id
+        :param groupRelations:配料组信息
+        """
+        return self.__client.call("eleme.product.item.setSkuIngredientGroup", {"specId": spec_id, "groupRelations": group_relations})
+
     def remove_ingredient_group(self, item_id):
         """
         删除配料组数据
@@ -730,6 +738,14 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.bindIngredientGroups", {"itemId": item_id, "ingredientGroupIds": ingredient_group_ids})
 
+    def bind_sku_ingredient_groups(self, spec_id, ingredient_group_ids):
+        """
+        给主料商品绑定配料组（规格维度）
+        :param specId:主料商品规格id
+        :param ingredientGroupIds:配料组id列表
+        """
+        return self.__client.call("eleme.product.item.bindSkuIngredientGroups", {"specId": spec_id, "ingredientGroupIds": ingredient_group_ids})
+
     def unbind_ingredient_groups(self, item_id, ingredient_group_ids):
         """
         解绑配料组
@@ -738,12 +754,27 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.unbindIngredientGroups", {"itemId": item_id, "ingredientGroupIds": ingredient_group_ids})
 
+    def unbind_sku_ingredient_groups(self, spec_id, ingredient_group_ids):
+        """
+        解绑配料组（规格维度）
+        :param specId:主料商品规格id
+        :param ingredientGroupIds:配料组id列表
+        """
+        return self.__client.call("eleme.product.item.unbindSkuIngredientGroups", {"specId": spec_id, "ingredientGroupIds": ingredient_group_ids})
+
     def remove_main_item_ingredient_groups(self, item_id):
         """
         移除主料商品的全部配料组
         :param itemId:主料商品id
         """
         return self.__client.call("eleme.product.item.removeMainItemIngredientGroups", {"itemId": item_id})
+
+    def remove_sku_ingredient_groups(self, spec_id):
+        """
+        移除主料商品的全部配料组（规格维度）
+        :param specId:主料商品规格id
+        """
+        return self.__client.call("eleme.product.item.removeSkuIngredientGroups", {"specId": spec_id})
 
     def update_item_group(self, shop_id, item_id, category_id):
         """
@@ -776,26 +807,29 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.getItemsByCategoryIdV2", {"categoryId": category_id})
 
-    def batch_update_shop_items(self, request):
+    def batch_update_shop_items(self, shop_id, request):
         """
         批量更新商品信息
+        :param shopId:店铺id
         :param request:店铺商品信息
         """
-        return self.__client.call("eleme.product.item.batchUpdateShopItems", {"request": request})
+        return self.__client.call("eleme.product.item.batchUpdateShopItems", {"shopId": shop_id, "request": request})
 
-    def batch_update_item_ingredient(self, request):
+    def batch_update_item_ingredient(self, shop_id, request):
         """
         批量更新商品配料信息
+        :param shopId:店铺id
         :param request:店铺商品信息
         """
-        return self.__client.call("eleme.product.item.batchUpdateItemIngredient", {"request": request})
+        return self.__client.call("eleme.product.item.batchUpdateItemIngredient", {"shopId": shop_id, "request": request})
 
-    def batch_update_item_category(self, request):
+    def batch_update_item_category(self, shop_id, request):
         """
         批量更新商品类目、类目属性、主材料信息
+        :param shopId:店铺id
         :param request:店铺商品信息
         """
-        return self.__client.call("eleme.product.item.batchUpdateItemCategory", {"request": request})
+        return self.__client.call("eleme.product.item.batchUpdateItemCategory", {"shopId": shop_id, "request": request})
 
     def get_shop_limited_items(self, shop_id):
         """
@@ -803,6 +837,12 @@ class ProductService:
         :param shopId:店铺id
         """
         return self.__client.call("eleme.product.item.getShopLimitedItems", {"shopId": shop_id})
+
+    def get_test_shop_ids(self):
+        """
+        测试专用，获取测试店铺id数据
+        """
+        return self.__client.call("eleme.product.item.getTestShopIds", {})
 
     def dy_audit_status_call_back(self, request):
         """
@@ -916,6 +956,41 @@ class ProductService:
         """
         return self.__client.call("eleme.product.chain.item.deleteSku", {"pId": p_id})
 
+    def publish_spu(self, shop_id, spu, is_auto_sync):
+        """
+        发布一个品牌标品
+        :param shopId:店铺id
+        :param spu:品牌标品
+        :param isAutoSync:是否自动同步
+        """
+        return self.__client.call("eleme.product.spu.publishSpu", {"shopId": shop_id, "spu": spu, "isAutoSync": is_auto_sync})
+
+    def delete_spu(self, shop_id, spu_out_code, is_auto_sync):
+        """
+        删除一个品牌标品
+        :param shopId:店铺id
+        :param spuOutCode:spuOutCode
+        :param isAutoSync:是否自动同步
+        """
+        return self.__client.call("eleme.product.spu.deleteSpu", {"shopId": shop_id, "spuOutCode": spu_out_code, "isAutoSync": is_auto_sync})
+
+    def update_spu_sale_status(self, shop_id, spu_out_code, sale_status, is_auto_sync):
+        """
+        修改SPU上下架状态
+        :param shopId:店铺id
+        :param spuOutCode:spuOutCode
+        :param saleStatus:售卖状态,0:上架;1:下架
+        :param isAutoSync:是否自动同步
+        """
+        return self.__client.call("eleme.product.spu.updateSpuSaleStatus", {"shopId": shop_id, "spuOutCode": spu_out_code, "saleStatus": sale_status, "isAutoSync": is_auto_sync})
+
+    def query_spu_by_page(self, query_page):
+        """
+        分页获取店铺下的SPU
+        :param queryPage:分页查询参数
+        """
+        return self.__client.call("eleme.product.spu.querySpuByPage", {"queryPage": query_page})
+
     def upload_image(self, image):
         """
         上传图片，返回图片的hash值
@@ -943,4 +1018,37 @@ class ProductService:
         :param hash:图片hash值
         """
         return self.__client.call("eleme.file.getImageUrl", {"hash": hash})
+
+    def publish_menu(self, shop_id, menu):
+        """
+        发布品牌菜单
+        :param shopId:店铺id
+        :param menu:品牌菜单信息
+        """
+        return self.__client.call("eleme.product.menu.publishMenu", {"shopId": shop_id, "menu": menu})
+
+    def get_menu(self, shop_id, menu_out_code):
+        """
+        获取菜单信息
+        :param shopId:店铺id
+        :param menuOutCode:菜单outCode
+        """
+        return self.__client.call("eleme.product.menu.getMenu", {"shopId": shop_id, "menuOutCode": menu_out_code})
+
+    def sync_menu(self, shop_id, menu_out_code, sync_shop_spus):
+        """
+        同步菜单标品到子门店
+        :param shopId:店铺id
+        :param menuOutCode:菜单outCode
+        :param syncShopSpus:同步店铺id列表
+        """
+        return self.__client.call("eleme.product.menu.syncMenu", {"shopId": shop_id, "menuOutCode": menu_out_code, "syncShopSpus": sync_shop_spus})
+
+    def get_sync_task(self, shop_id, task_id):
+        """
+        获取同步任务详情
+        :param shopId:店铺id
+        :param taskId:任务id
+        """
+        return self.__client.call("eleme.product.menu.getSyncTask", {"shopId": shop_id, "taskId": task_id})
 
