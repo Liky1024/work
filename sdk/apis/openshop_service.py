@@ -21,12 +21,12 @@ class OpenshopService:
         """
         return self.__client.call("eleme.openShop.getAllDivisionInfo", {})
 
-    def get_oss_signature(self, request):
+    def upload_file(self, request):
         """
-        获取oss签名(用于资质证照类文件上传)
+        资质证照类文件上传
         :param request:请求参数
         """
-        return self.__client.call("eleme.openShop.getOssSignature", {"request": request})
+        return self.__client.call("eleme.openShop.uploadFile", {"request": request})
 
     def save_draft(self, request):
         """

@@ -15,12 +15,12 @@ class MerchantService:
         """
         return self.__client.call("eleme.merchant.getMerchantContractTemplate", {})
 
-    def get_oss_signature(self, request):
+    def upload(self, request):
         """
-        获取oss签名(用于资质证照类文件上传)
+        文件上传(用于资质证照类文件上传)
         :param request:请求参数
         """
-        return self.__client.call("eleme.merchant.getOssSignature", {"request": request})
+        return self.__client.call("eleme.merchant.upload", {"request": request})
 
     def send_verify_code(self, request):
         """
@@ -81,7 +81,7 @@ class MerchantService:
     def get_by_id(self, request):
         """
         查询商户入驻申请详情
-        :param request:申请业务ID
+        :param request:请求参数
         """
         return self.__client.call("eleme.merchant.getById", {"request": request})
 
