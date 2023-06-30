@@ -110,3 +110,24 @@ class FinanceService:
         """
         return self.__client.call("eleme.finance.queryGoodsOrders", {"settleAccountShopId": settle_account_shop_id, "shopIdList": shop_id_list, "query": query})
 
+    def query_head_shop_generic_card_bills(self, page_query):
+        """
+        分页查询总店通兑卡账单
+        :param pageQuery:总店账单分页查询条件
+        """
+        return self.__client.call("eleme.finance.queryHeadShopGenericCardBills", {"pageQuery": page_query})
+
+    def query_branch_shop_generic_card_bills(self, page_query):
+        """
+        分页查询分店通兑卡账单列表
+        :param pageQuery:分页查询条件
+        """
+        return self.__client.call("eleme.finance.queryBranchShopGenericCardBills", {"pageQuery": page_query})
+
+    def query_generic_card_bill_by_order(self, order_bill_query):
+        """
+        查询外卖订单通兑卡账单信息
+        :param orderBillQuery:外卖订单查询条件
+        """
+        return self.__client.call("eleme.finance.queryGenericCardBillByOrder", {"orderBillQuery": order_bill_query})
+

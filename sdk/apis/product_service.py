@@ -838,6 +838,13 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.getShopLimitedItems", {"shopId": shop_id})
 
+    def get_shop_limited_items_v_2(self, shop_id):
+        """
+        获取店铺内修改受限制的商品，包含两类商品：有锁的商品和有pid关系的商品。这两种商品信息修改受到限制。
+        :param shopId:店铺id
+        """
+        return self.__client.call("eleme.product.item.getShopLimitedItemsV2", {"shopId": shop_id})
+
     def get_test_shop_ids(self):
         """
         测试专用，获取测试店铺id数据
