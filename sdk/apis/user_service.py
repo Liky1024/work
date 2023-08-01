@@ -21,3 +21,10 @@ class UserService:
         """
         return self.__client.call("eleme.user.getPhoneNumber", {})
 
+    def get_token_status(self, token):
+        """
+        获取授权token状态
+        :param token:授权token
+        """
+        return self.__client.call("eleme.user.getTokenStatus", {"token": token})
+

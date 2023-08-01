@@ -872,6 +872,20 @@ class ProductService:
         """
         return self.__client.call("eleme.product.renovate.agreeShopCommodityDiagnosisProblem", {"request": request})
 
+    def get_shop_commodity_diagnosis_data_v_2(self, shop_id):
+        """
+        查询单店铺商品诊断数据 新版
+        :param shopId:店铺ID
+        """
+        return self.__client.call("eleme.product.renovate.getShopCommodityDiagnosisDataV2", {"shopId": shop_id})
+
+    def agree_shop_commodity_diagnosis_problem_v_2(self, request):
+        """
+        一键批量商品老ID优化店铺问题商品详情信息新版
+        :param request:请求
+        """
+        return self.__client.call("eleme.product.renovate.agreeShopCommodityDiagnosisProblemV2", {"request": request})
+
     def get_chain_item(self, iid):
         """
         查询连锁总店商品信息
@@ -962,6 +976,30 @@ class ProductService:
         :param pId:连锁总店商品规格Id
         """
         return self.__client.call("eleme.product.chain.item.deleteSku", {"pId": p_id})
+
+    def get_items_by_ext_code(self, shop_id, item_ext_codes):
+        """
+        根据商品extCode批量查询商品详情
+        :param shopId:店铺Id
+        :param itemExtCodes:商品extCode列表，长度最大100
+        """
+        return self.__client.call("eleme.product.itemV2.getItemsByExtCode", {"shopId": shop_id, "itemExtCodes": item_ext_codes})
+
+    def batch_update_stock_detail_by_ext_code(self, shop_id, update_stock_requests):
+        """
+        根据规格extCode批量修改库存详细信息
+        :param shopId:店铺Id
+        :param updateStockRequests:更新规格请求列表，最大长度200
+        """
+        return self.__client.call("eleme.product.itemV2.batchUpdateStockDetailByExtCode", {"shopId": shop_id, "updateStockRequests": update_stock_requests})
+
+    def batch_update_sale_status_by_ext_code(self, shop_id, update_sale_status_requests):
+        """
+        根据商品extCode批量修改商品售卖状态
+        :param shopId:店铺Id
+        :param updateSaleStatusRequests:更新规格请求列表，最大长度30
+        """
+        return self.__client.call("eleme.product.itemV2.batchUpdateSaleStatusByExtCode", {"shopId": shop_id, "updateSaleStatusRequests": update_sale_status_requests})
 
     def publish_spu(self, shop_id, spu, is_auto_sync):
         """
