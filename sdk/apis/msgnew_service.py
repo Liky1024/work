@@ -11,14 +11,14 @@ class MsgnewService:
 
     def get_push_fail_msg(self, msg_query_request):
         """
-        获取未拉取的推送失败消息列表
+        获取推送失败的消息列表
         :param msgQueryRequest:查询条件
         """
         return self.__client.call("eleme.msgNew.getPushFailMsg", {"msgQueryRequest": msg_query_request})
 
     def confirm_pull_msg(self, msg_confirm_request):
         """
-        ISV通过该接口向平台确认已成功拉取消息
+        向平台确认已成功拉取推送失败的消息
         :param msgConfirmRequest:查询条件
         """
         return self.__client.call("eleme.msgNew.confirmPullMsg", {"msgConfirmRequest": msg_confirm_request})

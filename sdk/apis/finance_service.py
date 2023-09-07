@@ -103,7 +103,7 @@ class FinanceService:
 
     def query_goods_orders(self, settle_account_shop_id, shop_id_list, query):
         """
-        批量查询分店商品维度账单数据
+        批量查询分店商品维度的账单数据
         :param settleAccountShopId:结算入账ID
         :param shopIdList:门店id列表（限制100）
         :param query:查询条件

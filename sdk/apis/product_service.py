@@ -881,7 +881,7 @@ class ProductService:
 
     def agree_shop_commodity_diagnosis_problem_v_2(self, request):
         """
-        一键批量商品老ID优化店铺问题商品详情信息新版
+        一键 & 批量商品老ID优化店铺问题商品详情信息新版
         :param request:请求
         """
         return self.__client.call("eleme.product.renovate.agreeShopCommodityDiagnosisProblemV2", {"request": request})
@@ -1036,6 +1036,14 @@ class ProductService:
         """
         return self.__client.call("eleme.product.spu.querySpuByPage", {"queryPage": query_page})
 
+    def get_spu_by_spu_out_code(self, shop_id, spu_out_code):
+        """
+        根据spuOutCode获取spu信息
+        :param shopId:店铺id
+        :param spuOutCode:spuOutCode
+        """
+        return self.__client.call("eleme.product.spu.getSpuBySpuOutCode", {"shopId": shop_id, "spuOutCode": spu_out_code})
+
     def upload_image(self, image):
         """
         上传图片，返回图片的hash值
@@ -1091,9 +1099,17 @@ class ProductService:
 
     def get_sync_task(self, shop_id, task_id):
         """
-        获取同步任务详情
+        获取同步主任务信息
         :param shopId:店铺id
         :param taskId:任务id
         """
         return self.__client.call("eleme.product.menu.getSyncTask", {"shopId": shop_id, "taskId": task_id})
+
+    def get_sync_sub_tasks(self, shop_id, sub_task_ids):
+        """
+        批量查询同步子任务信息
+        :param shopId:店铺id
+        :param subTaskIds:任务id
+        """
+        return self.__client.call("eleme.product.menu.getSyncSubTasks", {"shopId": shop_id, "subTaskIds": sub_task_ids})
 
