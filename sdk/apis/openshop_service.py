@@ -63,3 +63,10 @@ class OpenshopService:
         """
         return self.__client.call("eleme.openShop.getDetailByApplyId", {"request": request})
 
+    def create(self, request):
+        """
+        创建开店申请
+        :param request:请求参数
+        """
+        return self.__client.call("eleme.openShop.create", {"request": request})
+
