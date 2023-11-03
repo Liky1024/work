@@ -851,6 +851,13 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.getTestShopIds", {})
 
+    def batch_get_pid_and_locks(self, item_ids):
+        """
+        批量查询店铺商品的连锁店PId和锁信息
+        :param itemIds:商品Id列表，数量不超过100
+        """
+        return self.__client.call("eleme.product.item.batchGetPidAndLocks", {"itemIds": item_ids})
+
     def dy_audit_status_call_back(self, request):
         """
         抖音审核回调

@@ -131,3 +131,17 @@ class FinanceService:
         """
         return self.__client.call("eleme.finance.queryGenericCardBillByOrder", {"orderBillQuery": order_bill_query})
 
+    def query_chain_shop_reward_bill(self, page_query):
+        """
+        分页查询店铺返佣账单信息
+        :param pageQuery:分页查询返佣账单条件
+        """
+        return self.__client.call("eleme.finance.queryChainShopRewardBill", {"pageQuery": page_query})
+
+    def query_reward_bill_by_order(self, query):
+        """
+        查询外卖订单的返佣账单信息
+        :param query:分页查询返佣账单条件
+        """
+        return self.__client.call("eleme.finance.queryRewardBillByOrder", {"query": query})
+
