@@ -105,13 +105,6 @@ class OrderService:
         """
         return self.__client.call("eleme.order.getCommodities", {"orderId": order_id})
 
-    def mget_commodities(self, order_ids):
-        """
-        批量获取订单菜品活动价格
-        :param orderIds:订单Id列表
-        """
-        return self.__client.call("eleme.order.mgetCommodities", {"orderIds": order_ids})
-
     def get_refund_order(self, order_id):
         """
         获取订单退款信息
@@ -214,20 +207,6 @@ class OrderService:
         :param evaluationInfo:评价信息
         """
         return self.__client.call("eleme.order.evaluateRider", {"orderId": order_id, "evaluationInfo": evaluation_info})
-
-    def mget_evaluation_infos(self, order_ids):
-        """
-        批量获取骑手评价信息
-        :param orderIds:订单Id的列表
-        """
-        return self.__client.call("eleme.order.mgetEvaluationInfos", {"orderIds": order_ids})
-
-    def mget_evaluation_status(self, order_ids):
-        """
-        批量获取是否可以评价骑手
-        :param orderIds:订单Id的列表
-        """
-        return self.__client.call("eleme.order.mgetEvaluationStatus", {"orderIds": order_ids})
 
     def mget_delivery_tip_infos(self, order_ids):
         """

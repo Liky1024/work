@@ -175,6 +175,11 @@
 
 
 ## CHANGELOG:
+
+### [1.30.19]
+Release Date : 2023-12-07
+- [Feature] 更新接口
+
 ### [1.30.18]
 Release Date : 2023-11-03
 - [Feature] 更新接口
