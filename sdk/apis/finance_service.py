@@ -145,3 +145,45 @@ class FinanceService:
         """
         return self.__client.call("eleme.finance.queryRewardBillByOrder", {"query": query})
 
+    def page_query_chain_shop_promotion_bill(self, page_query):
+        """
+        分页查询总店推广账单
+        :param pageQuery:总店账单分页查询条件
+        """
+        return self.__client.call("eleme.finance.pageQueryChainShopPromotionBill", {"pageQuery": page_query})
+
+    def page_query_branch_shop_promotion_bill(self, branch_shop_bill_page_query):
+        """
+        分页查询单店推广账单
+        :param branchShopBillPageQuery:分页账单查询条件
+        """
+        return self.__client.call("eleme.finance.pageQueryBranchShopPromotionBill", {"branchShopBillPageQuery": branch_shop_bill_page_query})
+
+    def query_promotion_bills_by_order(self, order_bill_query):
+        """
+        查询外卖订单推广账单
+        :param orderBillQuery:外卖订单查询条件
+        """
+        return self.__client.call("eleme.finance.queryPromotionBillsByOrder", {"orderBillQuery": order_bill_query})
+
+    def page_query_chain_shop_insurance_bills(self, page_query):
+        """
+        分页查询总店保险账单
+        :param pageQuery:总店账单分页查询条件
+        """
+        return self.__client.call("eleme.finance.pageQueryChainShopInsuranceBills", {"pageQuery": page_query})
+
+    def page_query_branch_shop_insurance_bills(self, page_query):
+        """
+        分页查询单店保险账单
+        :param pageQuery:分页查询条件
+        """
+        return self.__client.call("eleme.finance.pageQueryBranchShopInsuranceBills", {"pageQuery": page_query})
+
+    def query_insurance_bills_by_order(self, order_bill_query):
+        """
+        查询外卖订单保险账单
+        :param orderBillQuery:外卖订单查询条件
+        """
+        return self.__client.call("eleme.finance.queryInsuranceBillsByOrder", {"orderBillQuery": order_bill_query})
+

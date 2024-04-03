@@ -243,7 +243,7 @@ class OrderService:
 
     def set_order_prepared(self, order_id):
         """
-        非自配送餐厅标记已出餐
+        商家确认已完成出餐
         :param orderId:订单Id
         """
         return self.__client.call("eleme.order.setOrderPrepared", {"orderId": order_id})

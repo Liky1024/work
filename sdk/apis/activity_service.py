@@ -143,10 +143,17 @@ class ActivityService:
 
     def query_target_coupon_info(self, target_coupon_query_request):
         """
-        分页查询店铺的定向赠红包信息
+        分页查询店铺的定向赠红包信息(接口不在新接入，返回的是userId，不返回openUserId)
         :param targetCouponQueryRequest:定向赠红包查询入参对象
         """
         return self.__client.call("eleme.activity.coupon.queryTargetCouponInfo", {"targetCouponQueryRequest": target_coupon_query_request})
+
+    def query_target_coupon_info_v_2(self, target_coupon_query_request):
+        """
+        分页查询店铺的定向赠红包信息(新接入需要使用此接口，返回的是加密的openUserId，userId不返回)
+        :param targetCouponQueryRequest:定向赠红包查询入参对象
+        """
+        return self.__client.call("eleme.activity.coupon.queryTargetCouponInfoV2", {"targetCouponQueryRequest": target_coupon_query_request})
 
     def present_common_target_sku_coupons(self, chain_id, target_list, target_list_type, common_target_sku_coupon_detail):
         """

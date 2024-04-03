@@ -9,6 +9,48 @@ class ProductService:
     def __init__(self, client):
         self.__client = client
 
+    def publish_menu_v_2(self, shop_id, menu):
+        """
+        发布品牌菜单v2
+        :param shopId:店铺id
+        :param menu:品牌菜单信息
+        """
+        return self.__client.call("eleme.product.spuMenuV2.publishMenuV2", {"shopId": shop_id, "menu": menu})
+
+    def get_menu_v_2(self, shop_id, menu_out_code):
+        """
+        获取菜单信息v2
+        :param shopId:店铺id
+        :param menuOutCode:菜单outCode
+        """
+        return self.__client.call("eleme.product.spuMenuV2.getMenuV2", {"shopId": shop_id, "menuOutCode": menu_out_code})
+
+    def sync_menu_v_2(self, shop_id, menu_out_code, override_sync_shop_spu):
+        """
+        同步全量菜单标品到子门店v2
+        :param shopId:店铺id
+        :param menuOutCode:菜单outCode
+        :param overrideSyncShopSpu:同步门店菜单
+        """
+        return self.__client.call("eleme.product.spuMenuV2.syncMenuV2", {"shopId": shop_id, "menuOutCode": menu_out_code, "overrideSyncShopSpu": override_sync_shop_spu})
+
+    def sync_partial_menu_v_2(self, shop_id, menu_out_code, partial_sync_shop_spu):
+        """
+        同步部分菜单标品到子门店v2
+        :param shopId:店铺id
+        :param menuOutCode:菜单outCode
+        :param partialSyncShopSpu:同步门店菜单
+        """
+        return self.__client.call("eleme.product.spuMenuV2.syncPartialMenuV2", {"shopId": shop_id, "menuOutCode": menu_out_code, "partialSyncShopSpu": partial_sync_shop_spu})
+
+    def batch_get_sync_tasks_v_2(self, shop_id, task_ids):
+        """
+        获取同步菜单任务v2
+        :param shopId:店铺id
+        :param taskIds:任务id列表
+        """
+        return self.__client.call("eleme.product.spuMenuV2.batchGetSyncTasksV2", {"shopId": shop_id, "taskIds": task_ids})
+
     def get_menu_with_group(self, mid):
         """
         查询连锁总店菜单及分组信息
@@ -214,6 +256,16 @@ class ProductService:
         """
         return self.__client.call("eleme.product.category.createCategory", {"shopId": shop_id, "name": name, "description": description})
 
+    def create_category_v_2(self, shop_id, name, description, ext_code):
+        """
+        添加商品分类v2
+        :param shopId:店铺Id
+        :param name:商品分类名称，长度需在50字以内
+        :param description:商品分类描述，长度需在50字以内
+        :param extCode:商品分类外部编号
+        """
+        return self.__client.call("eleme.product.category.createCategoryV2", {"shopId": shop_id, "name": name, "description": description, "extCode": ext_code})
+
     def create_category_with_children(self, shop_id, name, parent_id, description):
         """
         添加商品分类，支持二级分类
@@ -232,6 +284,16 @@ class ProductService:
         :param description:商品分类描述，长度需在50字以内
         """
         return self.__client.call("eleme.product.category.updateCategory", {"categoryId": category_id, "name": name, "description": description})
+
+    def update_category_v_2(self, category_id, name, description, ext_code):
+        """
+        更新商品分类v2
+        :param categoryId:商品分类Id
+        :param name:商品分类名称，长度需在50字以内
+        :param description:商品分类描述，长度需在50字以内
+        :param extCode:商品分类外部编号
+        """
+        return self.__client.call("eleme.product.category.updateCategoryV2", {"categoryId": category_id, "name": name, "description": description, "extCode": ext_code})
 
     def update_category_with_children(self, category_id, name, parent_id, description):
         """
@@ -499,6 +561,13 @@ class ProductService:
         :param itemIds:商品Id的列表
         """
         return self.__client.call("eleme.product.item.batchRemoveItems", {"itemIds": item_ids})
+
+    def batch_remove_items_v_2(self, item_ids):
+        """
+        批量删除商品V2
+        :param itemIds:商品Id的列表
+        """
+        return self.__client.call("eleme.product.item.batchRemoveItemsV2", {"itemIds": item_ids})
 
     def batch_update_spec_stocks(self, spec_stocks):
         """
@@ -858,6 +927,14 @@ class ProductService:
         """
         return self.__client.call("eleme.product.item.batchGetPidAndLocks", {"itemIds": item_ids})
 
+    def batch_get_shop_can_support_ability(self, shop_ids, support_code):
+        """
+        批量获取店铺能否支持某能力
+        :param shopIds:店铺ID列表，数量不超过100
+        :param supportCode:支持的能力Code
+        """
+        return self.__client.call("eleme.product.item.batchGetShopCanSupportAbility", {"shopIds": shop_ids, "supportCode": support_code})
+
     def dy_audit_status_call_back(self, request):
         """
         抖音审核回调
@@ -1000,6 +1077,14 @@ class ProductService:
         """
         return self.__client.call("eleme.product.itemV2.batchUpdateStockDetailByExtCode", {"shopId": shop_id, "updateStockRequests": update_stock_requests})
 
+    def batch_update_stock_by_ext_code(self, shop_id, update_stock_requests):
+        """
+        根据规格extCode批量修改库存值
+        :param shopId:店铺Id
+        :param updateStockRequests:更新规格请求列表，最大长度200
+        """
+        return self.__client.call("eleme.product.itemV2.batchUpdateStockByExtCode", {"shopId": shop_id, "updateStockRequests": update_stock_requests})
+
     def batch_update_sale_status_by_ext_code(self, shop_id, update_sale_status_requests):
         """
         根据商品extCode批量修改商品售卖状态
@@ -1007,6 +1092,14 @@ class ProductService:
         :param updateSaleStatusRequests:更新规格请求列表，最大长度30
         """
         return self.__client.call("eleme.product.itemV2.batchUpdateSaleStatusByExtCode", {"shopId": shop_id, "updateSaleStatusRequests": update_sale_status_requests})
+
+    def batch_update_attribute_sale_status_by_ext_code(self, shop_id, update_attribute_sale_status_requests):
+        """
+        根据商品extCode批量修改商品售卖属性状态
+        :param shopId:店铺Id
+        :param updateAttributeSaleStatusRequests:更新商品售卖属性请求列表，最大长度30
+        """
+        return self.__client.call("eleme.product.itemV2.batchUpdateAttributeSaleStatusByExtCode", {"shopId": shop_id, "updateAttributeSaleStatusRequests": update_attribute_sale_status_requests})
 
     def publish_spu(self, shop_id, spu, is_auto_sync):
         """
@@ -1050,6 +1143,37 @@ class ProductService:
         :param spuOutCode:spuOutCode
         """
         return self.__client.call("eleme.product.spu.getSpuBySpuOutCode", {"shopId": shop_id, "spuOutCode": spu_out_code})
+
+    def publish_spu_v_2(self, shop_id, spu):
+        """
+        发布一个品牌标品v2
+        :param shopId:店铺id
+        :param spu:品牌标品
+        """
+        return self.__client.call("eleme.product.spuV2.publishSpuV2", {"shopId": shop_id, "spu": spu})
+
+    def delete_spu_v_2(self, shop_id, spu_out_code):
+        """
+        删除一个品牌标品v2
+        :param shopId:店铺id
+        :param spuOutCode:spuOutCode
+        """
+        return self.__client.call("eleme.product.spuV2.deleteSpuV2", {"shopId": shop_id, "spuOutCode": spu_out_code})
+
+    def query_spu_by_page_v_2(self, query_page):
+        """
+        分页获取店铺下的SPUv2
+        :param queryPage:分页查询参数
+        """
+        return self.__client.call("eleme.product.spuV2.querySpuByPageV2", {"queryPage": query_page})
+
+    def get_spu_by_spu_out_code_v_2(self, shop_id, spu_out_code):
+        """
+        根据spuOutCode获取spu信息v2
+        :param shopId:店铺id
+        :param spuOutCode:spuOutCode
+        """
+        return self.__client.call("eleme.product.spuV2.getSpuBySpuOutCodeV2", {"shopId": shop_id, "spuOutCode": spu_out_code})
 
     def upload_image(self, image):
         """
@@ -1119,4 +1243,13 @@ class ProductService:
         :param subTaskIds:任务id
         """
         return self.__client.call("eleme.product.menu.getSyncSubTasks", {"shopId": shop_id, "subTaskIds": sub_task_ids})
+
+    def sync_menu_pre_check(self, shop_id, menu_out_code, sync_shop_spus):
+        """
+        覆盖菜单同步预校验
+        :param shopId:店铺id
+        :param menuOutCode:菜单模板outCode
+        :param syncShopSpus:同步店铺id列表
+        """
+        return self.__client.call("eleme.product.menu.syncMenuPreCheck", {"shopId": shop_id, "menuOutCode": menu_out_code, "syncShopSpus": sync_shop_spus})
 
