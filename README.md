@@ -175,6 +175,10 @@
 
 
 ## CHANGELOG:
+### [1.30.22]
+Release Date : 2024-06-28
+- [Feature] 更新接口
+
 ### [1.30.21]
 Release Date : 2024-04-03
 - [Feature] 更新接口

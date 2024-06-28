@@ -17,6 +17,15 @@ class ProductService:
         """
         return self.__client.call("eleme.product.spuMenuV2.publishMenuV2", {"shopId": shop_id, "menu": menu})
 
+    def publish_menu_group_v_2(self, shop_id, menu_out_code, menu_group):
+        """
+        发布品牌菜单分组v2
+        :param shopId:店铺id
+        :param menuOutCode:菜单outCode
+        :param menuGroup:品牌菜单分组信息
+        """
+        return self.__client.call("eleme.product.spuMenuV2.publishMenuGroupV2", {"shopId": shop_id, "menuOutCode": menu_out_code, "menuGroup": menu_group})
+
     def get_menu_v_2(self, shop_id, menu_out_code):
         """
         获取菜单信息v2
@@ -42,6 +51,14 @@ class ProductService:
         :param partialSyncShopSpu:同步门店菜单
         """
         return self.__client.call("eleme.product.spuMenuV2.syncPartialMenuV2", {"shopId": shop_id, "menuOutCode": menu_out_code, "partialSyncShopSpu": partial_sync_shop_spu})
+
+    def get_spu_menu_sync_task_result_v_2(self, shop_id, main_task_id):
+        """
+        获取标品菜单同步任务结果v2
+        :param shopId:店铺id
+        :param mainTaskId:主任务id
+        """
+        return self.__client.call("eleme.product.spuMenuV2.getSpuMenuSyncTaskResultV2", {"shopId": shop_id, "mainTaskId": main_task_id})
 
     def batch_get_sync_tasks_v_2(self, shop_id, task_ids):
         """
@@ -651,6 +668,13 @@ class ProductService:
         :param queryPage:分页查询参数
         """
         return self.__client.call("eleme.product.item.queryItemByPage", {"queryPage": query_page})
+
+    def query_item_by_page_v_2(self, query_page):
+        """
+        分页获取店铺下的商品V2
+        :param queryPage:分页查询参数
+        """
+        return self.__client.call("eleme.product.item.queryItemByPageV2", {"queryPage": query_page})
 
     def get_material_tree(self, shop_id):
         """
